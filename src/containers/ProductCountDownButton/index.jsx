@@ -11,11 +11,11 @@ function ProductCountDownButton({ id }) {
   const cartProducts = useSelector((state) => state.cart.cartProducts);
 
   const handleProductCountDown = ({ target }) => {
-    const cartProduct = cartProducts.find((product) => product.product_id === id);
+    const cartProduct = cartProducts.find((product) => product.productId === id);
 
-    if (Number(cartProduct.cart_product_count) <= 1) return;
+    if (Number(cartProduct.cartProductCount) <= 1) return;
 
-    let count = Number(cartProduct.cart_product_count);
+    let count = Number(cartProduct.cartProductCount);
 
     dispatch(productCountEdit(target.id, (count -= 1)));
   };

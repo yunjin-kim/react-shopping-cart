@@ -3,7 +3,7 @@ import React from 'react';
 import Button from 'components/Button';
 
 function OrderProductsButton({ cartProducts }) {
-  const orderProductCount = cartProducts.filter((product) => product.cart_check).length;
+  const orderProductCount = cartProducts.filter((product) => product.cartCheck).length;
 
   const handleOrderProducts = () => {
     console.log('주문하기');

@@ -5,7 +5,7 @@ import Text from 'components/Text';
 
 function TotalCartProductText() {
   const isTotalCartProductCheck = useSelector((state) => state.cart.cartProducts).every(
-    (product) => product.cart_check,
+    (product) => product.cartCheck,
   );
 
   return <Text>{isTotalCartProductCheck ? '선택해제' : '전체선택'}</Text>;

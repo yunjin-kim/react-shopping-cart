@@ -49,27 +49,27 @@ describe('상품 페이지 테스트', () => {
   });
 
   const product = {
-    product_img_src:
+    productImgSrc:
       'https://cdn-mart.baemin.com/sellergoods/main/52afbaa7-809e-4e55-8080-3c357a94ba3a.gif',
-    product_title: '배달이친구들 케이블타이',
-    product_price: 4000,
+    productTitle: '배달이친구들 케이블타이',
+    productPrice: 4000,
   };
 
   test('상품 컴포넌트는 썸네일, 상품 이름, 가격, 장바구니 담기 버튼이 렌더해야 한다.', async () => {
     render(
       <Product
-        product_img_src={product.product_img_src}
-        product_title={product.product_title}
-        product_price={product.product_price}
+        productImgSrc={product.productImgSrc}
+        productTitle={product.productTitle}
+        productPrice={product.productPrice}
       />,
     );
 
     const productImg = screen.getAllByRole('img')[0];
     const addCartImg = screen.getAllByRole('img')[1];
 
-    expect(screen.getByText(product.product_title));
-    expect(screen.getByText(`${product.product_price.toLocaleString()}원`));
-    expect(productImg.src).toContain(product.product_img_src);
+    expect(screen.getByText(product.productTitle));
+    expect(screen.getByText(`${product.productPrice.toLocaleString()}원`));
+    expect(productImg.src).toContain(product.productImgSrc);
     expect(addCartImg.src).toContain('/img/shopping-cart-black.png');
   });
 

@@ -11,11 +11,11 @@ function ProductCountUpButton({ id }) {
   const cartProducts = useSelector((state) => state.cart.cartProducts);
 
   const handleProductCountUp = ({ target }) => {
-    const cartProduct = cartProducts.find((product) => product.product_id === id);
+    const cartProduct = cartProducts.find((product) => product.productId === id);
 
-    if (Number(cartProduct.cart_product_count) >= 1000) return;
+    if (Number(cartProduct.cartProductCount) >= 1000) return;
 
-    let count = Number(cartProduct.cart_product_count);
+    let count = Number(cartProduct.cartProductCount);
 
     dispatch(productCountEdit(target.id, (count += 1)));
   };

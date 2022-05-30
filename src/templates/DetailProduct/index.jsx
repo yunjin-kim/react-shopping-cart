@@ -15,14 +15,14 @@ function DetailProduct({ product }) {
     <DetailProductStyled>
       <FlexWrapper flexFlow="column wrap" alignItems="center" alignContent="center">
         <Image
-          src={product.product_img_src}
+          src={product.productImgSrc}
           width="570px"
           height="570px"
-          productTitle={product.product_title}
+          productTitle={product.productTitle}
         />
         <MarginWrapper marginBottom="20px" />
         <SubTitle width="640px" minWidth="400px" fontSize="2rem" paddingLeft="36px">
-          {product.product_title}
+          {product.productTitle}
         </SubTitle>
         <MarginWrapper marginBottom="34px" />
         <DetailProductPriceStyled>
@@ -30,11 +30,11 @@ function DetailProduct({ product }) {
             금액
           </Text>
           <Text fontSize="32px" fontWeight="400">
-            {product.product_price && product.product_price.toLocaleString()}원
+            {product.productPrice && product.productPrice.toLocaleString()}원
           </Text>
         </DetailProductPriceStyled>
         <MarginWrapper marginBottom="58px" />
-        <AddCartButton id={product.product_id} />
+        <AddCartButton id={product.productId} />
       </FlexWrapper>
     </DetailProductStyled>
   );

@@ -66,31 +66,31 @@ function Cart({ cartProducts }) {
           <FlexWrapper>
             <SubTitle>{`든든배송 상품 (${cartProducts.length}개)`}</SubTitle>
             {cartProducts.map((product) => (
-              <CartProductStyled key={product.product_id}>
-                <CartProductCheckbox id={product.product_id} checked={product.cart_check} />
+              <CartProductStyled key={product.productId}>
+                <CartProductCheckbox id={product.productId} checked={product.cartCheck} />
                 <Image
-                  src={product.product_img_src}
-                  id={product.product_id}
+                  src={product.productImgSrc}
+                  id={product.productId}
                   width="144px"
                   height="144px"
                   cursor="pointer"
-                  productTitle={product.product_title}
+                  productTitle={product.productTitle}
                 />
-                <Text>{product.product_title}</Text>
+                <Text>{product.productTitle}</Text>
                 <FlexWrapper flexFlow="column wrap" justifyContent="space-between" alignItems="end">
-                  <DeleteProductIconButton id={product.product_id} />
+                  <DeleteProductIconButton id={product.productId} />
                   <CartProductCountWrapperStyled>
                     <ProductCountInput
-                      id={product.product_id}
-                      productCount={product.cart_product_count}
+                      id={product.productId}
+                      productCount={product.cartProductCount}
                     />
                     <FlexWrapper flexFlow="column wrap">
-                      <ProductCountUpButton id={product.product_id} />
-                      <ProductCountDownButton id={product.product_id} />
+                      <ProductCountUpButton id={product.productId} />
+                      <ProductCountDownButton id={product.productId} />
                     </FlexWrapper>
                   </CartProductCountWrapperStyled>
                   <Text>
-                    {(product.cart_product_count * product.product_price).toLocaleString()}원
+                    {(product.cartProductCount * product.productPrice).toLocaleString()}원
                   </Text>
                 </FlexWrapper>
               </CartProductStyled>

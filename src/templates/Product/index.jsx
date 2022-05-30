@@ -11,39 +11,39 @@ import ProductTitle from 'containers/ProductTitle';
 
 import ProductStyled from './style';
 
-function Product({ product_id, product_img_src, product_title, product_price }) {
+function Product({ productId, productImgSrc, productTitle, productPrice }) {
   return (
     <ProductStyled>
-      <Link to={`/product/${product_id}`}>
+      <Link to={`/product/${productId}`}>
         <MarginWrapper marginBottom="18px">
           <Image
-            src={product_img_src}
-            id={product_id}
+            src={productImgSrc}
+            id={productId}
             width="100%"
             height="14.24vmax"
             cursor="pointer"
-            productTitle={product_title}
+            productTitle={productTitle}
           />
         </MarginWrapper>
       </Link>
       <FlexWrapper flexFlow="row nowrap" justifyContent="space-between" alignItems="center">
-        <Link to={`/product/${product_id}`}>
+        <Link to={`/product/${productId}`}>
           <div>
             <MarginWrapper marginBottom="6px">
-              <ProductTitle id={product_id}>{product_title}</ProductTitle>
+              <ProductTitle id={productId}>{productTitle}</ProductTitle>
             </MarginWrapper>
             <Text
-              id={product_id}
+              id={productId}
               color="#333333"
               fontSize="1.25rem"
               fontWeight="400"
               cursor="pointer"
             >
-              {product_price.toLocaleString()}원
+              {productPrice && productPrice.toLocaleString()}원
             </Text>
           </div>
         </Link>
-        <AddCartIconButton id={product_id} />
+        <AddCartIconButton id={productId} />
       </FlexWrapper>
     </ProductStyled>
   );

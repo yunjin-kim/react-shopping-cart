@@ -5,7 +5,7 @@ import Text from 'components/Text';
 function CartTotalPrice({ cartProducts }) {
   let totalPrice = 0;
   cartProducts.map((product) =>
-    product.cart_check ? (totalPrice += product.cart_product_count * product.product_price) : '',
+    product.cartCheck ? (totalPrice += product.cartProductCount * product.productPrice) : '',
   );
 
   return <Text>{totalPrice.toLocaleString()}원</Text>;

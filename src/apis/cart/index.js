@@ -49,14 +49,14 @@ export const deleteProductCart = (id) => async (dispatch) => {
 export const deleteSelectProductCart = () => async (dispatch, getState) => {
   const cartProducts = getState().cart.cartProducts;
   const deleteCartProductsId = cartProducts.map(
-    (product) => product.cart_check && product.product_id,
+    (product) => product.cartCheck && product.productId,
   );
 
   try {
     Promise.all([
       deleteCartProductsId.map((productId) => axios.delete('/mocking/cart', productId)),
     ]).then(() => {
-      const editCartProducts = cartProducts.filter((product) => !product.cart_check);
+      const editCartProducts = cartProducts.filter((product) => !product.cartCheck);
       dispatch(getProductCartSuccess(editCartProducts));
     });
   } catch (error) {
@@ -66,7 +66,7 @@ export const deleteSelectProductCart = () => async (dispatch, getState) => {
 
 export const productCountEdit = (id, count) => async (dispatch) => {
   try {
-    const response = await axios.patch('/mocking/cart', { product_id: id, product_count: count });
+    const response = await axios.patch('/mocking/cart', { productId: id, product_count: count });
     if (response.status === 202) {
       dispatch(openProductCountUpErrorModal());
       return;
@@ -80,26 +80,26 @@ export const productCountEdit = (id, count) => async (dispatch) => {
 
 export const checkCartProduct = (id, check) => (dispatch, getState) => {
   const editCartProducts = getState().cart.cartProducts.map((product) =>
-    product.product_id === Number(id) ? ((product.cart_check = check), { ...product }) : product,
+    product.productId === Number(id) ? ((product.cartCheck = check), { ...product }) : product,
   );
 
   dispatch(getProductCartSuccess(editCartProducts));
 };
 
 export const checkTotalCartProduct = () => (dispatch, getState) => {
-  const cartProductCheckList = getState().cart.cartProducts.every((product) => product.cart_check);
+  const cartProductCheckList = getState().cart.cartProducts.every((product) => product.cartCheck);
 
   if (cartProductCheckList) {
     // cartProductCheckList = ture라면 전체 다 체크 없애기
     const editCartProducts = getState().cart.cartProducts.map(
-      (product) => ((product.cart_check = false), { ...product }),
+      (product) => ((product.cartCheck = false), { ...product }),
     );
 
     dispatch(getProductCartSuccess(editCartProducts));
   } else {
     // cartProductCheckList = false라면 전체 체크
     const editCartProducts = getState().cart.cartProducts.map(
-      (product) => ((product.cart_check = true), { ...product }),
+      (product) => ((product.cartCheck = true), { ...product }),
     );
 
     dispatch(getProductCartSuccess(editCartProducts));

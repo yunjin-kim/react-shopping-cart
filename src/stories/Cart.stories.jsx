@@ -9,12 +9,12 @@ export default {
 
 const cartProducts = [
   {
-    cart_product_count: 1,
-    product_id: 11,
-    product_img_src:
+    cartProductCount: 1,
+    productId: 11,
+    productImgSrc:
       'https://cdn-mart.baemin.com/sellergoods/main/52e07957-c5ab-4f0c-862b-9dc6318dfffa.png',
-    product_price: 1000,
-    product_title: '엽서. 복',
+    productPrice: 1000,
+    productTitle: '엽서. 복',
   },
 ];
 

@@ -49,7 +49,7 @@ function ProductListPage() {
       {openAddCartErrorModal && <AddCartErrorModal />}
       <ProductListStyled>
         {products.map((product) => (
-          <Product key={product.product_id} {...product} />
+          <Product key={product.productId} {...product} />
         ))}
       </ProductListStyled>
     </>
