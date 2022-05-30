@@ -1,18 +1,18 @@
-export const GET_PRODUCT_LOADING = 'GET_PRODUCT_LOADING';
-export const GET_PRODUCT_SUCCESS = 'GET_PRODUCT_SUCCESS';
-export const GET_PRODUCT_FAIL = 'GET_PRODUCT_FAIL';
+export const IS_PRODUCT_LOADING = 'IS_PRODUCT_LOADING';
+export const IS_PRODUCT_SUCCESS = 'IS_PRODUCT_SUCCESS';
+export const IS_PRODUCT_FAIL = 'IS_PRODUCT_FAIL';
 
-export const GET_DETAIL_PRODUCT_LOADING = 'GET_DEATIL_PRODUCT_LOADING';
-export const GET_DETAIL_PRODUCT_SUCCESS = 'GET_DETAIL_PRODUCT_SUCCESS';
-export const GET_DETAIL_PRODUCT_FAIL = 'GET_DETAIL_PRODUCT_FAIL';
+export const IS_DETAIL_PRODUCT_LOADING = 'IS_DETAIL_PRODUCT_LOADING';
+export const IS_DETAIL_PRODUCT_SUCCESS = 'IS_DETAIL_PRODUCT_SUCCESS';
+export const IS_DETAIL_PRODUCT_FAIL = 'IS_DETAIL_PRODUCT_FAIL';
 
-export const getProductLoading = () => ({ type: GET_PRODUCT_LOADING });
-export const getProductSuccess = (products) => ({ type: GET_PRODUCT_SUCCESS, products });
-export const getProductFail = (error) => ({ type: GET_PRODUCT_FAIL, error });
+export const isProductLoading = () => ({ type: IS_PRODUCT_LOADING });
+export const isProductSuccess = (products) => ({ type: IS_PRODUCT_SUCCESS, products });
+export const isProductFail = (error) => ({ type: IS_PRODUCT_FAIL, error });
 
-export const getDetailProductLoading = () => ({ type: GET_DETAIL_PRODUCT_LOADING });
-export const getDetailProductSuccess = (detailProduct) => ({
-  type: GET_DETAIL_PRODUCT_SUCCESS,
+export const isDetailProductLoading = () => ({ type: IS_DETAIL_PRODUCT_LOADING });
+export const isDetailProductSuccess = (detailProduct) => ({
+  type: IS_DETAIL_PRODUCT_SUCCESS,
   detailProduct,
 });
-export const getDetailProductFail = () => ({ type: GET_DETAIL_PRODUCT_FAIL });
+export const isDetailProductFail = () => ({ type: IS_DETAIL_PRODUCT_FAIL });

@@ -77,7 +77,7 @@ describe('상품 페이지 테스트', () => {
     await getProductList()(mockDispatch);
 
     expect(mockDispatch).toBeCalledWith({
-      type: 'GET_PRODUCT_SUCCESS',
+      type: 'IS_PRODUCT_SUCCESS',
       products,
     });
   });
@@ -100,7 +100,7 @@ describe('장바구니 페이지 테스트', () => {
     await getCartList()(mockDispatch);
 
     expect(mockDispatch).toBeCalledWith({
-      type: 'GET_PRODUCT_CART_SUCCESS',
+      type: 'IS_PRODUCT_CART_SUCCESS',
       cartProducts,
     });
   });

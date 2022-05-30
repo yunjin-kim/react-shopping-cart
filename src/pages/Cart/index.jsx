@@ -11,14 +11,14 @@ import { useCart } from 'hooks';
 import Cart from 'templates/Cart';
 import { LoadingWrapperStyled } from 'pages/Product/style';
 
-import { GET_PRODUCT_CART_FAIL } from 'modules/cart';
+import { IS_PRODUCT_CART_FAIL } from 'modules/cart';
 
 import { CartPageStyled } from './style';
 
 function CartPage() {
   const { isCartProductsLoading, requestCartProductFail, cartProducts, requestCartProducts } =
     useCart();
-  const { openDeleteProductCartErrorModal, openCartProductMaxCountModal } = useSelector(
+  const { isDeleteProductCartErrorModalShow, isCartProductMaxCountModalShow } = useSelector(
     (state) => state.modal,
   );
 
@@ -36,7 +36,7 @@ function CartPage() {
     );
   }
 
-  if (requestCartProductFail === GET_PRODUCT_CART_FAIL) {
+  if (requestCartProductFail === IS_PRODUCT_CART_FAIL) {
     return (
       <Text color="#333333" fontSize="30px" fontWeight="800">
         장바구니 정보를 불러오는데 실패하였습니다.
@@ -46,8 +46,8 @@ function CartPage() {
 
   return (
     <>
-      {openDeleteProductCartErrorModal && <DeleteProductCartErrorModal />}
-      {openCartProductMaxCountModal && <CartProductMaxCountModal />}
+      {isDeleteProductCartErrorModalShow && <DeleteProductCartErrorModal />}
+      {isCartProductMaxCountModalShow && <CartProductMaxCountModal />}
       <CartPageStyled>
         <Cart cartProducts={cartProducts} />
       </CartPageStyled>

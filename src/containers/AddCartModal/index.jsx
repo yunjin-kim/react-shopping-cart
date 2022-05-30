@@ -10,14 +10,14 @@ import MarginWrapper from 'components/MarginWrapper';
 
 import MoveCartPageButton from 'containers/MoveCartPageButton';
 
-import { closeModal } from 'modules/modal';
+import { isModalClose } from 'modules/modal';
 import ModalPortal from 'Portal';
 
 function AddCartModal() {
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
-    dispatch(closeModal());
+    dispatch(isModalClose());
   };
 
   return (

@@ -1,68 +1,68 @@
 import {
-  GET_PRODUCT_LOADING,
-  GET_PRODUCT_SUCCESS,
-  GET_PRODUCT_FAIL,
-  GET_DETAIL_PRODUCT_LOADING,
-  GET_DETAIL_PRODUCT_SUCCESS,
-  GET_DETAIL_PRODUCT_FAIL,
+  IS_PRODUCT_LOADING,
+  IS_PRODUCT_SUCCESS,
+  isProductFail,
+  IS_DETAIL_PRODUCT_LOADING,
+  IS_DETAIL_PRODUCT_SUCCESS,
+  IS_DETAIL_PRODUCT_FAIL,
 } from './action';
 
 const initialState = {
   products: [],
-  getProductLoading: false,
-  getProductSuccess: false,
-  getProductFail: '',
+  isProductLoading: false,
+  isProductSuccess: false,
+  isProductFail: '',
   detailProduct: '',
-  getDetailProductLoading: false,
-  getDetailProductSuccess: false,
-  getDetailProductFail: '',
+  isDetailProductLoading: false,
+  isDetailProductSuccess: false,
+  isDetailProductFail: '',
 };
 
 function product(state = initialState, action) {
   switch (action.type) {
-    case GET_PRODUCT_LOADING:
+    case IS_PRODUCT_LOADING:
       return {
         ...state,
-        getProductLoading: true,
-        getProductSuccess: false,
-        getProductFail: '',
+        isProductLoading: true,
+        isProductSuccess: false,
+        isProductFail: '',
       };
-    case GET_PRODUCT_SUCCESS:
+    case IS_PRODUCT_SUCCESS:
       return {
         ...state,
-        getProductLoading: false,
-        getProductSuccess: true,
-        getProductFail: '',
+        isProductLoading: false,
+        isProductSuccess: true,
+        isProductFail: '',
         products: [...state.products, ...action.products],
       };
-    case GET_PRODUCT_FAIL:
+    case isProductFail:
       return {
         ...state,
-        getProductLoading: false,
-        getProductSuccess: false,
-        getProductFail: action.error,
+        isProductLoading: false,
+        isProductSuccess: false,
+        isProductFail: action.error,
       };
-    case GET_DETAIL_PRODUCT_LOADING:
+    case IS_DETAIL_PRODUCT_LOADING:
       return {
         ...state,
-        getDetailProductLoading: true,
-        getDetailProductSuccess: false,
-        getDetailProductFail: '',
+        isDetailProductLoading: true,
+        isDetailProductSuccess: false,
+        isDetailProductFail: '',
       };
-    case GET_DETAIL_PRODUCT_SUCCESS:
+    case IS_DETAIL_PRODUCT_SUCCESS:
       return {
         ...state,
-        getDetailProductLoading: false,
-        getDetailProductSuccess: true,
+        isDetailProductLoading: false,
+        isDetailProductSuccess: true,
         detailProduct: action.detailProduct,
-        getDetailProductFail: '',
+        isDetailProductFail: '',
       };
-    case GET_DETAIL_PRODUCT_FAIL:
+    case IS_DETAIL_PRODUCT_FAIL:
       return {
         ...state,
-        getDetailProductLoading: false,
-        getDetailProductSuccess: false,
-        getDetailProductFail: action.error,
+        isDetailProductLoading: false,
+        isDetailProductSuccess: false,
+        isDetailProductFail: action.error,
       };
     default:
       return state;

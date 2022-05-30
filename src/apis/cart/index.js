@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-import { getProductCartSuccess, getProductCartFail } from 'modules/cart';
+import { isProductCartSuccess, isProductCartFail } from 'modules/cart';
 
 import {
-  openAddCartErrorModal,
-  openAddCartModal,
-  openAlreadyInCartModal,
-  openDeleteProductCartErrorModal,
-  openProductCountUpErrorModal,
+  isAddCartErrorModalShow,
+  isAddCartModalShow,
+  isAlreadyInCartModalShow,
+  isDeleteProductCartErrorModalShow,
+  isProductCountUpErrorModalShow,
 } from 'modules/modal';
 
 export const getCartList = () => async (dispatch) => {
@@ -15,9 +15,9 @@ export const getCartList = () => async (dispatch) => {
     const response = await axios.get('/mocking/cart');
     const cartProducts = response.data;
 
-    dispatch(getProductCartSuccess(cartProducts));
+    dispatch(isProductCartSuccess(cartProducts));
   } catch (error) {
-    dispatch(getProductCartFail(error));
+    dispatch(isProductCartFail(error));
   }
 };
 
@@ -27,12 +27,12 @@ export const addProductCart =
     try {
       const response = await axios.post('/mocking/cart', id);
       if (response.data === 'same product in cart') {
-        dispatch(openAlreadyInCartModal());
+        dispatch(isAlreadyInCartModalShow());
         return;
       }
-      dispatch(openAddCartModal());
+      dispatch(isAddCartModalShow());
     } catch (error) {
-      dispatch(openAddCartErrorModal(error));
+      dispatch(isAddCartErrorModalShow(error));
     }
   };
 
@@ -40,9 +40,9 @@ export const deleteProductCart = (id) => async (dispatch) => {
   try {
     const response = await axios.delete('/mocking/cart', id);
 
-    dispatch(getProductCartSuccess(response.data));
+    dispatch(isProductCartSuccess(response.data));
   } catch (error) {
-    dispatch(openDeleteProductCartErrorModal(error));
+    dispatch(isDeleteProductCartErrorModalShow(error));
   }
 };
 
@@ -57,10 +57,10 @@ export const deleteSelectProductCart = () => async (dispatch, getState) => {
       deleteCartProductsId.map((productId) => axios.delete('/mocking/cart', productId)),
     ]).then(() => {
       const editCartProducts = cartProducts.filter((product) => !product.cartCheck);
-      dispatch(getProductCartSuccess(editCartProducts));
+      dispatch(isProductCartSuccess(editCartProducts));
     });
   } catch (error) {
-    dispatch(openDeleteProductCartErrorModal(error));
+    dispatch(isDeleteProductCartErrorModalShow(error));
   }
 };
 
@@ -68,13 +68,13 @@ export const productCountEdit = (id, count) => async (dispatch) => {
   try {
     const response = await axios.patch('/mocking/cart', { productId: id, product_count: count });
     if (response.status === 202) {
-      dispatch(openProductCountUpErrorModal());
+      dispatch(isProductCountUpErrorModalShow());
       return;
     }
 
-    dispatch(getProductCartSuccess(response.data));
+    dispatch(isProductCartSuccess(response.data));
   } catch (error) {
-    dispatch(openProductCountUpErrorModal());
+    dispatch(isProductCountUpErrorModalShow());
   }
 };
 
@@ -83,7 +83,7 @@ export const checkCartProduct = (id, check) => (dispatch, getState) => {
     product.productId === Number(id) ? ((product.cartCheck = check), { ...product }) : product,
   );
 
-  dispatch(getProductCartSuccess(editCartProducts));
+  dispatch(isProductCartSuccess(editCartProducts));
 };
 
 export const checkTotalCartProduct = () => (dispatch, getState) => {
@@ -95,13 +95,13 @@ export const checkTotalCartProduct = () => (dispatch, getState) => {
       (product) => ((product.cartCheck = false), { ...product }),
     );
 
-    dispatch(getProductCartSuccess(editCartProducts));
+    dispatch(isProductCartSuccess(editCartProducts));
   } else {
     // cartProductCheckList = false라면 전체 체크
     const editCartProducts = getState().cart.cartProducts.map(
       (product) => ((product.cartCheck = true), { ...product }),
     );
 
-    dispatch(getProductCartSuccess(editCartProducts));
+    dispatch(isProductCartSuccess(editCartProducts));
   }
 };

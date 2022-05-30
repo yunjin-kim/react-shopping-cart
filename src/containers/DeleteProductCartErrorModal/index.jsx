@@ -8,13 +8,13 @@ import Text from 'components/Text';
 
 import ModalPortal from 'Portal';
 import { useDispatch } from 'react-redux';
-import { closeModal } from 'modules/modal';
+import { isModalClose } from 'modules/modal';
 
 function DeleteProductCartErrorModal() {
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
-    dispatch(closeModal());
+    dispatch(isModalClose());
   };
 
   return (

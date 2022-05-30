@@ -1,63 +1,63 @@
 import {
-  OPEN_ALREADY_IN_CART_MODAL,
-  OPEN_ADD_CART_MODAL,
-  OPEN_ADD_CART_ERROR_MODAL,
-  OPEN_DELETE_PRODUCT_CART_ERROR_MODAL,
-  OPEN_PRODUCT_COUNT_UP_ERROR_MODAL,
-  OPEN_CART_PRODUCT_MAX_COUNT_MODAL,
-  CLOSE_MODAL,
+  IS_ALREADY_IN_CART_MODAL_SHOW,
+  IS_ADD_CART_MODAL_SHOW,
+  IS_ADD_CART_ERROR_MODAL_SHOW,
+  IS_DELETE_PRODUCT_CART_ERROR_MODAL_SHOW,
+  IS_PRODUCT_COUNT_UP_ERROR_MODAL_SHOW,
+  IS_CART_PRODUCT_MAX_COUNT_MODAL_SHOW,
+  IS_MODAL_CLOSE,
 } from './action';
 
 const initialState = {
-  openAlreadyInCartModal: false,
-  openAddCartModal: false,
-  openAddCartErrorModal: false,
-  openDeleteProductCartErrorModal: false,
-  openProductCountUpErrorModal: false,
-  openCartProductMaxCountModal: false,
+  isAlreadyInCartModalShow: false,
+  isAddCartModalShow: false,
+  isAddCartErrorModalShow: false,
+  isDeleteProductCartErrorModalShow: false,
+  isProductCountUpErrorModalShow: false,
+  isCartProductMaxCountModalShow: false,
 };
 
 const modal = (state = initialState, action) => {
   switch (action.type) {
-    case OPEN_ALREADY_IN_CART_MODAL:
+    case IS_ALREADY_IN_CART_MODAL_SHOW:
       return {
         ...state,
-        openAlreadyInCartModal: true,
+        isAlreadyInCartModalShow: true,
       };
-    case OPEN_ADD_CART_MODAL:
+    case IS_ADD_CART_MODAL_SHOW:
       return {
         ...state,
-        openAddCartModal: true,
+        isAddCartModalShow: true,
       };
-    case OPEN_ADD_CART_ERROR_MODAL:
+    case IS_ADD_CART_ERROR_MODAL_SHOW:
       return {
         ...state,
-        openAddCartErrorModal: true,
+        isAddCartErrorModalShow: true,
       };
-    case OPEN_DELETE_PRODUCT_CART_ERROR_MODAL:
+    case IS_DELETE_PRODUCT_CART_ERROR_MODAL_SHOW:
       return {
         ...state,
-        openDeleteProductCartErrorModal: true,
+        isDeleteProductCartErrorModalShow: true,
       };
-    case OPEN_PRODUCT_COUNT_UP_ERROR_MODAL:
+    case IS_PRODUCT_COUNT_UP_ERROR_MODAL_SHOW:
       return {
         ...state,
-        openProductCountUpErrorModal: true,
+        isProductCountUpErrorModalShow: true,
       };
-    case OPEN_CART_PRODUCT_MAX_COUNT_MODAL:
+    case IS_CART_PRODUCT_MAX_COUNT_MODAL_SHOW:
       return {
         ...state,
-        openCartProductMaxCountModal: true,
+        isCartProductMaxCountModalShow: true,
       };
-    case CLOSE_MODAL:
+    case IS_MODAL_CLOSE:
       return {
         ...state,
-        openAlreadyInCartModal: false,
-        openAddCartModal: false,
-        openAddCartErrorModal: false,
-        openDeleteProductCartErrorModal: false,
-        openProductCountUpErrorModal: false,
-        openCartProductMaxCountModal: false,
+        isAlreadyInCartModalShow: false,
+        isAddCartModalShow: false,
+        isAddCartErrorModalShow: false,
+        isDeleteProductCartErrorModalShow: false,
+        isProductCountUpErrorModalShow: false,
+        isCartProductMaxCountModalShow: false,
       };
     default:
       return state;

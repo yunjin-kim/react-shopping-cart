@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import Input from 'components/Input';
 
-import { openCartProductMaxCountModal } from 'modules/modal';
+import { isCartProductMaxCountModalShow } from 'modules/modal';
 
 import { productCountEdit } from 'apis/cart';
 
@@ -20,7 +20,7 @@ function ProductCountInput({ id, productCount }) {
     }
 
     if (Number(target.value) > 1000) {
-      dispatch(openCartProductMaxCountModal());
+      dispatch(isCartProductMaxCountModalShow());
       return;
     }
 

@@ -12,11 +12,11 @@ import AddCartErrorModal from 'containers/AddCartErrorModal';
 
 import Product from 'templates/Product';
 
-import { GET_PRODUCT_FAIL } from 'modules/product';
+import { IS_PRODUCT_FAIL } from 'modules/product';
 
 function ProductListPage() {
-  const { isProductLoading, requestProductFail, products, requestProduct } = useProducts();
-  const { openAlreadyInCartModal, openAddCartModal, openAddCartErrorModal } = useSelector(
+  const { productLoading, requestProductFail, products, requestProduct } = useProducts();
+  const { isAlreadyInCartModalShow, isAddCartModalShow, isAddCartErrorModalShow } = useSelector(
     (state) => state.modal,
   );
 
@@ -24,7 +24,7 @@ function ProductListPage() {
     requestProduct();
   }, []);
 
-  if (isProductLoading) {
+  if (productLoading) {
     return (
       <LoadingWrapperStyled>
         <Text color="#333333" fontSize="30px" fontWeight="800">
@@ -34,7 +34,7 @@ function ProductListPage() {
     );
   }
 
-  if (requestProductFail === GET_PRODUCT_FAIL) {
+  if (requestProductFail === IS_PRODUCT_FAIL) {
     return (
       <Text color="#333333" fontSize="30px" fontWeight="800">
         상품 정보를 불러오는데 실패하였습니다.
@@ -44,9 +44,9 @@ function ProductListPage() {
 
   return (
     <>
-      {openAlreadyInCartModal && <AlreadyCartModal />}
-      {openAddCartModal && <AddCartModal />}
-      {openAddCartErrorModal && <AddCartErrorModal />}
+      {isAlreadyInCartModalShow && <AlreadyCartModal />}
+      {isAddCartModalShow && <AddCartModal />}
+      {isAddCartErrorModalShow && <AddCartErrorModal />}
       <ProductListStyled>
         {products.map((product) => (
           <Product key={product.productId} {...product} />

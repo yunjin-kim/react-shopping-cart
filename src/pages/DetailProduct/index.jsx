@@ -10,7 +10,7 @@ import AddCartErrorModal from 'containers/AddCartErrorModal';
 
 import DetailProduct from 'templates/DetailProduct';
 
-import { GET_DETAIL_PRODUCT_FAIL } from 'modules/product';
+import { IS_DETAIL_PRODUCT_FAIL } from 'modules/product';
 
 import { LoadingWrapperStyled } from 'pages/Product/style';
 
@@ -20,7 +20,7 @@ function DetailProudctPage() {
   const { id } = useParams();
   const { isDetailProductLoading, requestDetailProductFail, detailProduct, requestDetailProduct } =
     useDetailProduct(id);
-  const { openAlreadyInCartModal, openAddCartModal, openAddCartErrorModal } = useSelector(
+  const { isAlreadyInCartModalShow, isAddCartModalShow, isAddCartErrorModalShow } = useSelector(
     (state) => state.modal,
   );
 
@@ -38,7 +38,7 @@ function DetailProudctPage() {
     );
   }
 
-  if (requestDetailProductFail === GET_DETAIL_PRODUCT_FAIL) {
+  if (requestDetailProductFail === IS_DETAIL_PRODUCT_FAIL) {
     return (
       <Text color="#333333" fontSize="30px" fontWeight="800">
         상품 정보를 불러오는데 실패하였습니다.
@@ -47,9 +47,9 @@ function DetailProudctPage() {
   }
   return (
     <>
-      {openAlreadyInCartModal && <AlreadyCartModal />}
-      {openAddCartModal && <AddCartModal />}
-      {openAddCartErrorModal && <AddCartErrorModal />}
+      {isAlreadyInCartModalShow && <AlreadyCartModal />}
+      {isAddCartModalShow && <AddCartModal />}
+      {isAddCartErrorModalShow && <AddCartErrorModal />}
       <DetailProduct product={detailProduct} />
     </>
   );

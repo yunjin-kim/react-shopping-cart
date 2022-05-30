@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 import {
-  getProductSuccess,
-  getProductFail,
-  getDetailProductSuccess,
-  getDetailProductFail,
+  isProductSuccess,
+  isProductFail,
+  isDetailProductSuccess,
+  isDetailProductFail,
 } from 'modules/product';
 
 export const getProductList = () => async (dispatch) => {
@@ -12,9 +12,9 @@ export const getProductList = () => async (dispatch) => {
     const response = await axios.get('/mocking/products');
     const products = await response.data;
 
-    dispatch(getProductSuccess(products));
+    dispatch(isProductSuccess(products));
   } catch (error) {
-    dispatch(getProductFail(error));
+    dispatch(isProductFail(error));
   }
 };
 
@@ -23,8 +23,8 @@ export const getDetailProduct = (id) => async (dispatch) => {
     const response = await axios.get(`/mocking/products/${id}`);
     const detailProduct = await response.data;
 
-    dispatch(getDetailProductSuccess(detailProduct));
+    dispatch(isDetailProductSuccess(detailProduct));
   } catch (error) {
-    dispatch(getDetailProductFail(error));
+    dispatch(isDetailProductFail(error));
   }
 };

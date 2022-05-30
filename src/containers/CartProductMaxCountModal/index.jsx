@@ -8,13 +8,13 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 
 import ModalPortal from 'Portal';
-import { closeModal } from 'modules/modal';
+import { isModalClose } from 'modules/modal';
 
 function CartProductMaxCountModal() {
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
-    dispatch(closeModal());
+    dispatch(isModalClose());
   };
 
   return (

@@ -1,10 +1,10 @@
-export const GET_PRODUCT_CART_LOADING = 'GET_PRODUCT_CART_LOADING';
-export const GET_PRODUCT_CART_SUCCESS = 'GET_PRODUCT_CART_SUCCESS';
-export const GET_PRODUCT_CART_FAIL = 'GET_PRODUCT_CART_FAIL';
+export const IS_PRODUCT_CART_LOADING = 'IS_PRODUCT_CART_LOADING';
+export const IS_PRODUCT_CART_SUCCESS = 'IS_PRODUCT_CART_SUCCESS';
+export const IS_PRODUCT_CART_FAIL = 'IS_PRODUCT_CART_FAIL';
 
-export const getProductCartLoading = () => ({ type: GET_PRODUCT_CART_LOADING });
-export const getProductCartSuccess = (cartProducts) => ({
-  type: GET_PRODUCT_CART_SUCCESS,
+export const isProductCartLoading = () => ({ type: IS_PRODUCT_CART_LOADING });
+export const isProductCartSuccess = (cartProducts) => ({
+  type: IS_PRODUCT_CART_SUCCESS,
   cartProducts,
 });
-export const getProductCartFail = () => ({ type: GET_PRODUCT_CART_FAIL });
+export const isProductCartFail = () => ({ type: IS_PRODUCT_CART_FAIL });
