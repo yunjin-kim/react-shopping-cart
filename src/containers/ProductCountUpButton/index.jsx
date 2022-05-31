@@ -15,9 +15,7 @@ function ProductCountUpButton({ id }) {
 
     if (Number(cartProduct.cartProductCount) >= 1000) return;
 
-    let count = Number(cartProduct.cartProductCount);
-
-    dispatch(productCountEdit(target.id, (count += 1)));
+    dispatch(productCountEdit(target.id, (cartProduct.cartProductCount += 1)));
   };
 
   return (
