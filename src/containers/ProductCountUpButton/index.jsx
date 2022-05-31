@@ -1,27 +1,17 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 import Image from 'components/Image';
 import Button from 'components/Button';
 
-import { productCountEdit } from 'apis/cart';
+import { useProductCounter } from 'hooks';
 
 function ProductCountUpButton({ id }) {
-  const dispatch = useDispatch();
-  const cartProducts = useSelector((state) => state.cart.cartProducts);
-
-  const handleProductCountUp = ({ target }) => {
-    const cartProduct = cartProducts.find((product) => product.productId === id);
-
-    if (Number(cartProduct.cartProductCount) >= 1000) return;
-
-    dispatch(productCountEdit(target.id, (cartProduct.cartProductCount += 1)));
-  };
+  const { handleProductCounter } = useProductCounter();
 
   return (
     <Button id={id} width="42px" height="30px" border="1px solid black">
       <Image
-        onClick={handleProductCountUp}
+        onClick={handleProductCounter}
         src="img/arrow-up.png"
         id={id}
         width="12px"

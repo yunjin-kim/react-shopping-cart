@@ -1,29 +1,17 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 import Image from 'components/Image';
 import Button from 'components/Button';
 
-import { productCountEdit } from 'apis/cart';
+import { useProductCounter } from 'hooks';
 
 function ProductCountDownButton({ id }) {
-  const dispatch = useDispatch();
-  const cartProducts = useSelector((state) => state.cart.cartProducts);
-
-  const handleProductCountDown = ({ target }) => {
-    const cartProduct = cartProducts.find((product) => product.productId === id);
-
-    if (Number(cartProduct.cartProductCount) <= 1) return;
-
-    let count = Number(cartProduct.cartProductCount);
-
-    dispatch(productCountEdit(target.id, (count -= 1)));
-  };
+  const { handleProductCounter } = useProductCounter();
 
   return (
     <Button id={id} width="42px" height="30px" border="1px solid black">
       <Image
-        onClick={handleProductCountDown}
+        onClick={handleProductCounter}
         src="img/arrow-down.png"
         id={id}
         width="12px"

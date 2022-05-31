@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getCartList } from 'apis/cart';
+import { getCartList, productCountEdit } from 'apis/cart';
 import { isProductCartLoading } from 'modules/cart';
 
 import { getDetailProduct, getProductList } from 'apis/product';
@@ -46,4 +46,21 @@ export const useDetailProduct = (id) => {
   };
 
   return { isDetailProductLoading, requestDetailProductFail, detailProduct, requestDetailProduct };
+};
+
+export const useProductCounter = () => {
+  const dispatch = useDispatch();
+  const cartProducts = useSelector((state) => state.cart.cartProducts);
+
+  const handleProductCounter = ({ target }) => {
+    const cartProduct = cartProducts.find((product) => product.productId === Number(target.id));
+
+    if (target.src.includes('arrow-up') && Number(cartProduct.cartProductCount) <= 1000) {
+      dispatch(productCountEdit(target.id, (cartProduct.cartProductCount += 1)));
+    } else if (target.src.includes('arrow-down') && Number(cartProduct.cartProductCount) > 1) {
+      dispatch(productCountEdit(target.id, (cartProduct.cartProductCount -= 1)));
+    }
+  };
+
+  return { handleProductCounter };
 };
